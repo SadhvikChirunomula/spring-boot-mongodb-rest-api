@@ -1,0 +1,196 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Mongo CRUD API",
+    "version": "2.0",
+    "title": "Mongo CRUD API",
+    "license": {}
+  },
+  "host": "localhost:8080",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "asset-data-controller",
+      "description": "API's related to AssetData"
+    }
+  ],
+  "paths": {
+    "/api/create": {
+      "post": {
+        "tags": [
+          "asset-data-controller"
+        ],
+        "summary": "create",
+        "operationId": "createUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "newAssetDataObject",
+            "description": "newAssetDataObject",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AssetDataModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/AssetDataModel"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/delete/{assetId}": {
+      "delete": {
+        "tags": [
+          "asset-data-controller"
+        ],
+        "summary": "delete",
+        "operationId": "deleteUsingDELETE",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "assetId",
+            "in": "path",
+            "description": "assetId",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "string"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/read": {
+      "get": {
+        "tags": [
+          "asset-data-controller"
+        ],
+        "summary": "read",
+        "operationId": "readUsingGET_1",
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/AssetDataModel"
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/read/{assetId}": {
+      "get": {
+        "tags": [
+          "asset-data-controller"
+        ],
+        "summary": "read",
+        "operationId": "readUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "assetId",
+            "in": "path",
+            "description": "assetId",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/AssetDataModel"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/update": {
+      "put": {
+        "tags": [
+          "asset-data-controller"
+        ],
+        "summary": "update",
+        "operationId": "updateUsingPUT",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "modifiedAssetDataObject",
+            "description": "modifiedAssetDataObject",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AssetDataModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/AssetDataModel"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    }
+  },
+  "definitions": {
+    "AssetDataModel": {
+      "type": "object",
+      "properties": {
+        "assetId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "description": {
+          "type": "string"
+        },
+        "subJobs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "title": "AssetDataModel"
+    }
+  }
+}
